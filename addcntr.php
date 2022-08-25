@@ -41,13 +41,13 @@ if(isset($data['create_cntprt'])) {
 
 	if(mb_strlen($data['iin']) < 11 || mb_strlen($data['iin']) > 12) {
 
-	    $errors[] = "Некорректный ИИН";
+	    $errors[] = "Слишком короткий ИИН";
 
     }
 
   if (mb_strlen($data['passnum']) < 8 || mb_strlen($data['passnum']) > 9){
 
-	    $errors[] = "Некорретный номер удостоверения";
+	    $errors[] = "Слишком короткий номер удостоверения";
 
     }
 
