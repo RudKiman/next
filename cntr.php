@@ -9,44 +9,59 @@ $allRecords = R::count( 'counterparty' );
 $totalPages = ceil($allRecords / $limit);
 $prev = $page - 1;
 $next = $page + 1;
-?>
 
+?>
+<div class="table-responsive">
   <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Отчество</th>
-        <th>ИИН</th>
-        <th>Номер удостоверения</th>
-        <th>Дата выдачи</th>
-        <th>Кем выдано</th>
-        <th>Юр.лицо</th>
-        <th>Название организации</th>
-        <th>БИН</th>
-        <th>БИК</th>
-        <th>Юр.адрес</th>
+        <th scope="col">#</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Отчество</th>
+        <th scope="col">ИИН</th>
+        <th scope="col">Номер удостоверения</th>
+        <th scope="col">Дата выдачи</th>
+        <th scope="col">Кем выдано</th>
+        <th scope="col">Юр.лицо</th>
+        <th scope="col">Название организации</th>
+        <th scope="col">БИН</th>
+        <th scope="col">БИК</th>
+        <th scope="col">Юр.адрес</th>
     </tr>
-<?php
-    foreach($cntr as $row){
-        echo "<tr>";
-        echo "<td>" . $row["id"] . "</td>";
-        echo "<td>" . $row["surname"] . "</td>";
-        echo "<td>" . $row["name"] . "</td>";
-        echo "<td>" . $row["patron"] . "</td>";
-        echo "<td>" . $row["iin"] . "</td>";
-        echo "<td>" . $row["passnum"] . "</td>";
-        echo "<td>" . $row["issdate"] . "</td>";
-        echo "<td>" . $row["issby"] . "</td>";
-        echo "<td>" . $row["isent"] . "</td>";
-        echo "<td>" . $row["entname"] . "</td>";
-        echo "<td>" . $row["bin"] . "</td>";
-        echo "<td>" . $row["bik"] . "</td>";
-        echo "<td>" . $row["intadress"] . "</td>";
-        echo "</tr>";
-    }
-?>
+<?php foreach($cntr as $row):?>
+<tr>
+<td> <?php echo $row["id"];?> </td>
+<td> <?php echo $row["name"];?> </td>
+<td> <?php echo $row["surname"];?> </td>
+<td> <?php echo $row["patron"];?> </td>
+<td> <?php echo $row["iin"];?> </td>
+<td> <?php echo $row["passnum"];?> </td>
+<td> <?php echo $row["issdate"];?> </td>
+<td> <?php echo $row["issby"];?> </td>
+<td> <?php echo $row["issent"];?> </td>
+<td> <?php echo $row["entname"];?> </td>
+<td> <?php echo $row["bin"];?> </td>
+<td> <?php echo $row["bik"];?> </td>
+<td> <?php echo $row["intadress"];?>  </td>
+<td>
+  <div class="dropdown">
+  <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Действие
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="editcntr.php">Изменить</a></li>
+    <li><a class="dropdown-item" href="delcntr.php">Удалить</a></li>
+  </ul>
+</div>
+</td>
+</tr>
+<?php endforeach; ?>
   </table>
+</div>
+  <div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+  </div>
+
       <nav aria-label="Page navigation example mt-5">
           <ul class="pagination justify-content-center">
               <li class="page-item <?php if ($page <= 1) {
@@ -76,4 +91,5 @@ $next = $page + 1;
               </li>
           </ul>
       </nav>
+
 <?php require __DIR__ . '/php/footer.php'; ?>
